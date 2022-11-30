@@ -1,0 +1,147 @@
+body{
+    display: flex;
+    margin: 0%;
+    font-family: "Calibri";
+}
+#left
+{
+    display: flex;
+    width: 55vw;
+    flex-direction: column;
+    background-color: rgba(245, 245, 245, 0.507);
+    height: 100vh;
+}
+img
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px 0px 10px 0px;
+}
+.innerdiv
+{
+    display: flex;
+    width: 60%;
+    align-items: center;
+}
+#innerdiv2
+{
+    display: flex;
+    align-items: center;
+
+}
+#check
+{
+    margin: 0%;
+}
+#checkbox
+{
+    margin: 0%;
+}
+
+.taskdiv
+{
+    margin: 0%;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(158, 158, 158, 0.63);
+    padding: 2%;
+    margin-left: 2%;
+    margin-bottom:1% ;
+    margin-right: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+.taskheading
+{
+    margin: 0%;
+    margin-left: 5%;
+    font-size: 1.1em;
+    filter: contrast(140%)
+}
+.delimg:hover
+{
+   filter: contrast(150%);
+}
+h2
+{
+    color: grey;
+    font-style: italic;
+    font-size: 1em;
+    font-weight: 100;
+}
+h1
+{
+    margin: 0%;
+    padding: 2%;
+    font-size: 2em;
+}
+#right
+{
+    display: flex;
+    width: 45vw;
+    padding: 1%;
+    flex-direction: column;
+}
+input
+{
+    display: block;
+    padding: 1%;
+}
+
+h3
+{
+    margin: 0%;
+    padding: 2%;
+    font-size: 2em;
+}
+
+#task
+{
+    width: 92%;
+    border: 0px;
+    background-color: rgba(240, 250, 250, 0.342);
+    padding: 3%;
+    margin-left: 1%;
+    font-size: 0.9em;
+    box-shadow: 1px 1px 2px lightgray;
+}
+
+#upload::-webkit-file-upload-button
+{
+    margin: 2%;;
+    padding: 2%;
+    border: 0px;
+    padding-left: 2%;
+    margin-left: 0%;
+    background-color: rgb(252, 249, 249);
+    border: 2px;
+    box-shadow: 1px 1px 2px lightgray;
+}
+#upload::-webkit-file-upload-button:active
+{
+    margin: 2%;;
+    padding: 2%;
+    border: 0px;
+    padding-left: 2%;
+    margin-left: 0%;
+    background-color: rgb(247, 253, 255);
+    border: 2px;;
+    box-shadow: 1px 1px 3px lightgray;
+}
+#submit
+{
+    padding: 2%;
+    border: 0px;
+    margin-left: 1% ;
+    background-color: whitesmoke;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px lightgray;
+}
+#submit:active
+{
+    padding: 2%;
+    border: 0px;
+    margin-left: 1% ;
+    background-color: rgb(241, 241, 241);
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px lightgray;
+}
