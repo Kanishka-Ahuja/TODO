@@ -1,1 +1,1 @@
-[{"Task":"AJAX","url":"f743e98935fc4537b975a72e49116fad","check":false},{"Task":"DSA","url":"e41dc9e9dd260529038ac0cc74e5eb17","check":0},{"Task":"Machine Learning","url":"e7d734615f4440889657273278500a05","check":0},{"Task":"Web DEV","url":"e9109a9bb94d189aec78fe131334039e","check":0}]
+[{"Task":"Machine Learning","url":"c72e5f05dd48e0b002e8570ce172d94b","check":0},{"Task":"Web Development","url":"52b1539f9ec00644913e3922ea61550c","check":0},{"Task":"DSA","url":"c35fb810a394ab733af3a0a58f345dff","check":true}]
