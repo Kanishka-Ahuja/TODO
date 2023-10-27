@@ -10,89 +10,127 @@
 </head>
 
 <body>
+
+    <!-- Defining the contents of Left Div -->
+
     <div id=left>
+
+        <!--Heading-->
         <h1>Task List...</h1>
+
+        <!--Representing already present data-->
+
         <% for(let i=0;i< data.length;i++){ %>
+
             <div class="taskdiv" id="<%= data[i].Task %>">
+
+                <!-- We have divided the task div in two parts : 1 => for storing image and Task name    i.e innerdiv
+                                                                2 => for checkbox and delete icon       i.e innerdiv2 -->
                 <div class="innerdiv">
+
                     <img src="<%= data[i].url %>" >
+                    
+                    <!-- Based on whether the check value is true or false we are printing the task name -->
                     <% if( data[i].check ){ %>
-                    <h4 class="taskheading" style="text-decoration:line-through"><%= data[i].Task %></h4>
+                        <h4 class="taskheading" style="text-decoration:line-through;color:grey;font-weight: 300;"><%= data[i].Task %></h4>
                     <% } else { %>
-                    <h4 class="taskheading"><%= data[i].Task %></h4>
+                        <h4 class="taskheading"><%= data[i].Task %></h4>
                     <% } %>
-    </div>
-            <div id = "innerdiv2">
-                <% if(data[i].check){ %>
-                    <input id="1<%= data[i].Task %>" type="checkbox" value="<%= data[i].Task %>" onclick=check(value) checked>
-                <% } else { %>
-                    <input id="1<%= data[i].Task %>" type="checkbox" value="<%= data[i].Task %>" onclick=check(value) >
-                    <% } %>
-                <img class= "delimg" id="<%= data[i].Task %>" src="deleteicon.jpg" onclick=del(id)>
-            </div>
-            </div>
-            <% } %>    
-            <script>
-                function check(id)
-                {
-                    console.log(id)
-                    let req= new XMLHttpRequest();
-                    req.open('POST','/check')
-                    req.setRequestHeader("Content-Type","application/json")
-                    let data= JSON.stringify({Id:id}) 
-                    console.log(data)
-                    req.send(data)
-                    req.addEventListener("load",function(){
-                        if(req.status===200)
-                        {
-                            let doc = document.getElementById(id);
-                            doc = doc.firstElementChild.lastElementChild
-                            console.log(doc)
-                            console.log(doc)
-                            let a = document.getElementById(`1${id}`);
-                            if(a.checked)
-                            {
-                                doc.setAttribute("style","text-decoration:line-through")
-                            }
-                            else
-                            {
-                                doc.setAttribute("style","text-decoration:none")
-                            }
-                        }
-                    })
-                }
-                function del(id)
-                {
-                    console.log(id)
-                    let req= new XMLHttpRequest();
-                    req.open('POST','/delete')
-                    req.setRequestHeader("Content-Type","application/json")
-                    let data= JSON.stringify({Id:id}) 
-                    console.log(data)
-                    req.send(data)
-                    req.addEventListener("load",function(){
-                        if(req.status===200)
-                        {
-                            let doc = document.getElementById(id);
-                            doc.remove()   
-                        }
-                    })
-                }
-            </script>
-    </div>
-    <div id = right>
-        <form id= "form" method="POST" action="/postdata" enctype="multipart/form-data">
-                    <h3>Task Form...</h3>
-                    <input id="task" type="text" name="Task" placeholder="Enter task...">
-                    <input id="upload" type="file" name="Profile" value="Choose File" accept="image/*">
-                    <input id="submit" type="submit" name="submit" value="Submit">
-                    <h2>
-                        <%= Error %>
-                    </h2>
-                    </form>
+
                 </div>
 
+                <div id = "innerdiv2">
+
+                    <!-- Based on whether the check value is true or false we are enabling the checkbox -->
+                    <% if(data[i].check){ %>
+                        <input id="1<%= data[i].Task %>" type="checkbox" value="<%= data[i].Task %>" onclick=check(value) checked>
+                    <% } else { %>
+                        <input id="1<%= data[i].Task %>" type="checkbox" value="<%= data[i].Task %>" onclick=check(value) >
+                    <% } %>
+
+                    <img class= "delimg" id="<%= data[i].Task %>" src="deleteicon.jpg" onclick=del(id)>
+
+                </div>
+
+            </div>
+
+        <% } %>   
+
+    </div>
+    
+    <!-- Defining the Script -->
+
+    <script>
+    
+        // This is what, that happens when we click on check-box
+        function check(id)
+        {        
+            let req= new XMLHttpRequest();                                          // Creating Request
+            req.open('POST','/check')                                               // Defining method and Route
+            req.setRequestHeader("Content-Type","application/json")                 // Setting up Headers    
+            let data= JSON.stringify({Id:id})                                       // Converting the data in the JSON string 
+            req.send(data)
+
+            // It works when req gets completed and response is achieved
+            req.addEventListener("load",function()
+            {    
+                if(req.status===200)
+                {
+                    let tdiv = document.getElementById(id);                         // Accessing the taskdiv
+                    theading = tdiv.firstElementChild.lastElementChild              // Accessing the heading tag to alter task heading
+                    let c = document.getElementById(`1${id}`);                      // Accessing the check-box
+                        
+                    // Changing the style if the checkbox is checked
+                    if(c.checked)
+                    {
+                        theading.setAttribute("style","text-decoration:line-through; color:grey; font-weight:300")
+                    }
+                    else
+                    {
+                        theading.setAttribute("style","text-decoration:none; color: black;font-weight: bold")
+                    }
+                }
+            })
+        }
+
+        // This is what, that happens when we click on the delete-icon
+        function del(id)
+        {
+            let req= new XMLHttpRequest();                                          // Creating the request
+            req.open('POST','/delete')                                              // Defining method and Route
+            req.setRequestHeader("Content-Type","application/json")                 // Setting up Headers
+            let data= JSON.stringify({Id:id})                                       // Converting the data in the JSON string 
+            req.send(data)
+            
+            // It works when req gets completed and response is achieved
+            req.addEventListener("load",function()
+            {
+                if(req.status===200)
+                {
+                    let tdiv = document.getElementById(id);                         // Accessing the task div
+                    tdiv.remove()   
+                }
+            })
+        }
+
+    </script>
+    
+    <!-- Defining the contents of the right div -->
+
+    <div id = right>
+
+        <!-- Creating a form -->
+        <form id= "form" method="POST" action="/postdata" enctype="multipart/form-data">
+
+            <h3>Task Form...</h3>                                                       
+            <input id="task" type="text" name="Task" placeholder="Enter task...">                          <!--To Input task name-->
+            <input id="upload" type="file" name="Profile" value="Choose File" accept="image/*">            <!--To input image-->
+            <input id="submit" type="submit" name="submit" value="Submit">         
+            <h2><%= Error %></h2>                                                                          <!--To display error, if any-->
+
+        </form>
+        
+    </div>
 
 </body>
-
 </html>
