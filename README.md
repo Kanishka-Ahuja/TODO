@@ -4,20 +4,20 @@ Here's, a brief about the project.
 
 <b>Languages used :-</b> EJS, CSS, NODE JS
 
-<b>Functionalities :</b> 
+<b>Functionalities :-</b> 
 <ul>
     <li>Upload image file to the server</li>
-    <li>Check or uncheck the task if it ahs been completed</li>
+    <li>Check or uncheck the task based on completion</li>
     <li>Deletion of task</li>
 </ul>
 
-Info regarding files
+<b>Information regarding files :-</b>
 
 <b>public</b>   Contains the static files
                 <ul>
-                <li>delete icon image</li>
-                <li><b>index.ejs :- </b>Contains the frontend page</li>
-                <li><b>style.css :- </b>Contains the stylesheet</li>
+                <li><b>deleteicon.png :- </b>Delete icon image</li>
+                <li><b>index.ejs      :- </b>Contains the frontend page</li>
+                <li><b>style.css      :- </b>Contains the stylesheet</li>
                 </ul>
 
 <b>uploads</b>  Stores the images uploaded on the server
